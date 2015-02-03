@@ -2,7 +2,7 @@
 <HEAD>
 	<TITLE>BDD PLANCTON</TITLE>
 </HEAD>
-<BODY> <background="eau2.jpg" LINK="#0B173B"> <!--bgcolor="e9f7f7">a voir VLINK="3399FF" -->
+<BODY> <!--background="eau2.jpg" LINK="#0B173B"> <bgcolor="e9f7f7"> <!--a voir VLINK="3399FF" -->
 	<br>
 	<H1><center><FONT size="6">Base de donn&eacute;e planctonique</FONT></center></HI><br>
 	<hr style="color:blue ; height:3px;"/><br><br>
