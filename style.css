@@ -1,0 +1,11 @@
+header
+{
+	color: rgb(255,255,255);
+}
+
+body
+{
+
+ background-image: url("low.png");
+ background-repeat:repeat;
+}
