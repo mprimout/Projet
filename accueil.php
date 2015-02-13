@@ -9,7 +9,7 @@
 	<header>
 		<H1><center>Base de donn&eacute;es planctonique
 			<br>
-				<small>petit paragraphe sur le plancton est le role de la base de donnee
+				<small>petit paragraphe sur le plancton et le role de la base de donnee
 			</font></small>
 			</center>
 		</H1>
@@ -24,10 +24,10 @@
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="#">Home</a></li>
-						<li><a href="#">Advanced search</a></li>
-						<li><a href="#">Link</a></li>
-						<li><a href="#">Login admin</a></li>
+						<li><a href="home.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+						<li><a href="formulaire.php">Advanced search</a></li>
+						<li><a href="lien.php">Link</a></li>
+						<li><a href="admin.php">Login admin</a></li>
 					</ul>
 				</div>
 			</div>
