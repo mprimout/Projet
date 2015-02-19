@@ -7,32 +7,40 @@
 </HEAD>
 <body>
 	<header>
-		<H1><center>Base de donn&eacute;es planctonique
+	<!--div class="page-header"-->
+		<H1><center>Planktonic DataBase
 			<br>
-				<small>petit paragraphe sur le plancton et le role de la base de donnee
-			</font></small>
+			<br>
+				<small>Plankton are a set of plants and aquatic animals living in the water fresh, brackish and salt. Generally microscopic or small, they are able to limited movement, but unable to move against the current. We define the planktonic organisms from their ecological niche. Indeed, it is divided into two kingdoms plankton : the plant or plankton and phytoplankton animal plankton or zooplankton.
+				</small>
 			</center>
 		</H1>
+		<!--/div-->
 	</header>
 	<br>
 	<br>
 	<br>
 	<br>
-	<div class="col-md-2 col-md-offset-2">.col-md-2 .col-md-offset-2</div>
-	<div class="col-xs-6 col-sm-4">.col-xs-6 .col-sm-4
+	<div class="col-md-2 col-md-offset-2"></div>
+	<div class="col-xs-6 col-sm-4">
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="home.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
-						<li><a href="formulaire.php">Advanced search</a></li>
-						<li><a href="lien.php">Link</a></li>
-						<li><a href="admin.php">Login admin</a></li>
+						<li><a href="formulaire.php"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>  Advanced search</a></li>
+						<li><a href="lien.php"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span> Link</a></li>
+						<li><a href="admin.php"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>  Login admin</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<center><img src="image/plancton.jpg" width="300" height="300"></center>
 </body>
 
 </HTML>
