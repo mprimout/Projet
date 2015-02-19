@@ -1,0 +1,460 @@
+-- phpMyAdmin SQL Dump
+-- version 4.0.10deb1
+-- http://www.phpmyadmin.net
+--
+-- Client: localhost
+-- Généré le: Ven 13 Février 2015 à 16:36
+-- Version du serveur: 5.5.41-0ubuntu0.14.04.1
+-- Version de PHP: 5.5.9-1ubuntu4.5
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de données: `phpmyadmin`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pma_bookmark`
+--
+
+CREATE TABLE IF NOT EXISTS `pma_bookmark` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dbase` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `user` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `label` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `query` text COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Bookmarks' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pma_column_info`
+--
+
+CREATE TABLE IF NOT EXISTS `pma_column_info` (
+  `id` int(5) unsigned NOT NULL AUTO_INCREMENT,
+  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `column_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `comment` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `mimetype` varchar(255) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  `transformation` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `transformation_options` varchar(255) COLLATE utf8_bin NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `db_name` (`db_name`,`table_name`,`column_name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Column information for phpMyAdmin' AUTO_INCREMENT=17 ;
+
+--
+-- Contenu de la table `pma_column_info`
+--
+
+INSERT INTO `pma_column_info` (`id`, `db_name`, `table_name`, `column_name`, `comment`, `mimetype`, `transformation`, `transformation_options`) VALUES
+(1, 'plancton', 'groupe_commun', 'groupe', '', '', '_', ''),
+(2, 'plancton', 'donnees_genomiques', 'taille', '', '', '_', ''),
+(3, 'plancton', 'donnees_genomiques', 'tailleG', '', '', '_', ''),
+(4, 'plancton', 'espece', 'posCotMax', '', '', '_', ''),
+(5, 'plancton', 'espece', 'posCotMin', '', '', '_', ''),
+(6, 'plancton', 'espece', 'ColonneDeauMax', '', '', '_', ''),
+(7, 'plancton', 'espece', 'ColonneDeauMin', '', '', '_', ''),
+(8, 'plancton', 'espece', 'modeNut', '', '', '_', ''),
+(9, 'plancton', 'espece', 'toxicite', '', '', '_', ''),
+(10, 'plancton', 'espece', 'cosmetique', '', '', '_', ''),
+(11, 'plancton', 'espece', 'pharmacologie', '', '', '_', ''),
+(12, 'plancton', 'espece', 'comestible', '', '', '_', ''),
+(13, 'plancton', 'espece', 'genre', '', '', '_', ''),
+(14, 'plancton', 'espece', 'tempMax', '', '', '_', ''),
+(15, 'plancton', 'espece', 'tempMin', '', '', '_', ''),
+(16, 'plancton', 'espece', 'salinite', '', '', '_', '');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pma_designer_coords`
+--
+
+CREATE TABLE IF NOT EXISTS `pma_designer_coords` (
+  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `x` int(11) DEFAULT NULL,
+  `y` int(11) DEFAULT NULL,
+  `v` tinyint(4) DEFAULT NULL,
+  `h` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`db_name`,`table_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table coordinates for Designer';
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pma_history`
+--
+
+CREATE TABLE IF NOT EXISTS `pma_history` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `timevalue` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `sqlquery` text COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `username` (`username`,`db`,`table`,`timevalue`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='SQL history for phpMyAdmin' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pma_pdf_pages`
+--
+
+CREATE TABLE IF NOT EXISTS `pma_pdf_pages` (
+  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `page_nr` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `page_descr` varchar(50) CHARACTER SET utf8 NOT NULL DEFAULT '',
+  PRIMARY KEY (`page_nr`),
+  KEY `db_name` (`db_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='PDF relation pages for phpMyAdmin' AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pma_recent`
+--
+
+CREATE TABLE IF NOT EXISTS `pma_recent` (
+  `username` varchar(64) COLLATE utf8_bin NOT NULL,
+  `tables` text COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Recently accessed tables';
+
+--
+-- Contenu de la table `pma_recent`
+--
+
+INSERT INTO `pma_recent` (`username`, `tables`) VALUES
+('root', '[{"db":"plancton","table":"espece"},{"db":"plancton","table":"famille"},{"db":"plancton","table":"genre"},{"db":"plancton","table":"donnees_genomiques"},{"db":"plancton","table":"groupe_commun"},{"db":"plancton","table":"type"},{"db":"plancton","table":"typeP"},{"db":"plancton","table":"Admin"},{"db":"plancton","table":"groupe commun"},{"db":"plancton","table":"genreP"}]');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pma_relation`
+--
+
+CREATE TABLE IF NOT EXISTS `pma_relation` (
+  `master_db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `master_table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `master_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `foreign_db` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `foreign_table` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `foreign_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  PRIMARY KEY (`master_db`,`master_table`,`master_field`),
+  KEY `foreign_field` (`foreign_db`,`foreign_table`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Relation table';
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pma_table_coords`
+--
+
+CREATE TABLE IF NOT EXISTS `pma_table_coords` (
+  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `pdf_page_number` int(11) NOT NULL DEFAULT '0',
+  `x` float unsigned NOT NULL DEFAULT '0',
+  `y` float unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`db_name`,`table_name`,`pdf_page_number`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table coordinates for phpMyAdmin PDF output';
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pma_table_info`
+--
+
+CREATE TABLE IF NOT EXISTS `pma_table_info` (
+  `db_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `table_name` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  `display_field` varchar(64) COLLATE utf8_bin NOT NULL DEFAULT '',
+  PRIMARY KEY (`db_name`,`table_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Table information for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pma_table_uiprefs`
+--
+
+CREATE TABLE IF NOT EXISTS `pma_table_uiprefs` (
+  `username` varchar(64) COLLATE utf8_bin NOT NULL,
+  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
+  `table_name` varchar(64) COLLATE utf8_bin NOT NULL,
+  `prefs` text COLLATE utf8_bin NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`username`,`db_name`,`table_name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Tables'' UI preferences';
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pma_tracking`
+--
+
+CREATE TABLE IF NOT EXISTS `pma_tracking` (
+  `db_name` varchar(64) COLLATE utf8_bin NOT NULL,
+  `table_name` varchar(64) COLLATE utf8_bin NOT NULL,
+  `version` int(10) unsigned NOT NULL,
+  `date_created` datetime NOT NULL,
+  `date_updated` datetime NOT NULL,
+  `schema_snapshot` text COLLATE utf8_bin NOT NULL,
+  `schema_sql` text COLLATE utf8_bin,
+  `data_sql` longtext COLLATE utf8_bin,
+  `tracking` set('UPDATE','REPLACE','INSERT','DELETE','TRUNCATE','CREATE DATABASE','ALTER DATABASE','DROP DATABASE','CREATE TABLE','ALTER TABLE','RENAME TABLE','DROP TABLE','CREATE INDEX','DROP INDEX','CREATE VIEW','ALTER VIEW','DROP VIEW') COLLATE utf8_bin DEFAULT NULL,
+  `tracking_active` int(1) unsigned NOT NULL DEFAULT '1',
+  PRIMARY KEY (`db_name`,`table_name`,`version`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin ROW_FORMAT=COMPACT COMMENT='Database changes tracking for phpMyAdmin';
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `pma_userconfig`
+--
+
+CREATE TABLE IF NOT EXISTS `pma_userconfig` (
+  `username` varchar(64) COLLATE utf8_bin NOT NULL,
+  `timevalue` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `config_data` text COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='User preferences storage for phpMyAdmin';
+
+--
+-- Contenu de la table `pma_userconfig`
+--
+
+INSERT INTO `pma_userconfig` (`username`, `timevalue`, `config_data`) VALUES
+('root', '2015-01-22 18:55:33', '{"lang":"fr"}');
+--
+-- Base de données: `plancton`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `Admin`
+--
+
+CREATE TABLE IF NOT EXISTS `Admin` (
+  `Nomid` varchar(20) NOT NULL DEFAULT '',
+  `MotDePasse` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`Nomid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `donnees_genomiques`
+--
+
+CREATE TABLE IF NOT EXISTS `donnees_genomiques` (
+  `id` varchar(20) NOT NULL DEFAULT '',
+  `ref` varchar(50) DEFAULT NULL,
+  `lienURL` varchar(50) DEFAULT NULL,
+  `tailleG` int(11) DEFAULT NULL,
+  `GC` int(11) DEFAULT NULL,
+  `nbrgene` int(11) DEFAULT NULL,
+  `Espece` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `cletrangeredonnees` (`Espece`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `espece`
+--
+
+CREATE TABLE IF NOT EXISTS `espece` (
+  `espece` varchar(40) NOT NULL DEFAULT '',
+  `appelC` varchar(20) DEFAULT NULL,
+  `taille` int(11) DEFAULT NULL,
+  `salinite` int(11) DEFAULT NULL,
+  `posCotMax` int(11) DEFAULT NULL,
+  `posCotMin` int(11) DEFAULT NULL,
+  `ColonneDeauMax` int(11) DEFAULT NULL,
+  `ColonneDeauMin` int(11) DEFAULT NULL,
+  `tempMax` int(11) DEFAULT NULL,
+  `tempMin` int(11) DEFAULT NULL,
+  `modeNut` varchar(40) DEFAULT NULL,
+  `toxicite` tinyint(1) DEFAULT NULL,
+  `cosmetique` tinyint(1) DEFAULT NULL,
+  `pharmacologie` tinyint(1) DEFAULT NULL,
+  `comestible` tinyint(1) DEFAULT NULL,
+  `industrie` tinyint(1) DEFAULT NULL,
+  `genre` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`espece`),
+  KEY `cletrangereespece` (`genre`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `espece`
+--
+
+INSERT INTO `espece` (`espece`, `appelC`, `taille`, `salinite`, `posCotMax`, `posCotMin`, `ColonneDeauMax`, `ColonneDeauMin`, `tempMax`, `tempMin`, `modeNut`, `toxicite`, `cosmetique`, `pharmacologie`, `comestible`, `industrie`, `genre`) VALUES
+('actinoptychus splendens shadbolt', NULL, 63, 35, 1000, 0, NULL, NULL, 20, 10, 'autotrophe', 0, 0, 0, 0, 0, 'actinoptychus ehrenberg'),
+('coscinodiscus asteromphalus ehrenberg ', NULL, 194, 35, 2688, 0, NULL, NULL, 30, 10, 'autotrophe', 0, 0, 0, 0, 0, 'coscinodiscus ehrenberg'),
+('paralia sulcata ehrenberg', NULL, 12, 35, 2500, 0, NULL, NULL, 40, 0, 'autotrophe', 0, 0, 0, 0, 0, 'paralia ehrenberg'),
+('podosira stelligera bailey', NULL, 44, 35, 1000, 0, NULL, NULL, 30, 10, 'autotrophe', 0, 0, 0, 0, 0, 'podosira ehrenberg'),
+('stephanopyxis palmeriana greville', NULL, 50, 35, 2500, 0, NULL, NULL, 30, 10, 'autotrophe', 0, 0, 0, 0, NULL, 'stephanopyxis ehrenberg'),
+('thalassiosira sp ', NULL, 28, 35, 2688, 0, NULL, NULL, 30, 10, 'autotrophe', 1, 0, 0, 0, 1, 'thalassiosira cleve');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `famille`
+--
+
+CREATE TABLE IF NOT EXISTS `famille` (
+  `famille` varchar(20) NOT NULL DEFAULT '',
+  `groupe` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`famille`),
+  KEY `cletrangerefamille` (`groupe`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `famille`
+--
+
+INSERT INTO `famille` (`famille`, `groupe`) VALUES
+('biddulphiaceae', 'diatomée'),
+('coscinodiscaceae', 'diatomée'),
+('fragilariineae', 'diatomée'),
+('heliopeltaceae', 'diatomée'),
+('melosiraceae', 'diatomée'),
+('thalassiosiraceae', 'diatomée');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `genre`
+--
+
+CREATE TABLE IF NOT EXISTS `genre` (
+  `genre` varchar(40) NOT NULL DEFAULT '',
+  `famille` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`genre`),
+  KEY `cletrangeregenre` (`famille`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `genre`
+--
+
+INSERT INTO `genre` (`genre`, `famille`) VALUES
+('coscinodiscus ehrenberg', 'coscinodiscaceae'),
+('actinoptychus ehrenberg', 'heliopeltaceae'),
+('melosira agardh', 'melosiraceae'),
+('paralia ehrenberg', 'melosiraceae'),
+('podosira ehrenberg', 'melosiraceae'),
+('stephanopyxis ehrenberg', 'melosiraceae'),
+('aulacoseira thwaites', 'thalassiosiraceae'),
+('thalassiosira cleve', 'thalassiosiraceae');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `groupe_commun`
+--
+
+CREATE TABLE IF NOT EXISTS `groupe_commun` (
+  `groupe` varchar(30) NOT NULL DEFAULT '',
+  `temporaire` tinyint(1) DEFAULT NULL,
+  `type` varchar(14) DEFAULT NULL,
+  PRIMARY KEY (`groupe`),
+  KEY `cleE1` (`type`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `groupe_commun`
+--
+
+INSERT INTO `groupe_commun` (`groupe`, `temporaire`, `type`) VALUES
+('artemia-salina', 0, 'zooplancton'),
+('chlorophycée', 0, 'phytoplancton'),
+('chysophycée', 0, 'phytoplancton'),
+('coccolithe', 0, 'phytoplancton'),
+('copépode', 0, 'zooplancton'),
+('cyanobactérie', 0, 'phytoplancton'),
+('diatomée', 0, 'phytoplancton'),
+('dinoflagelle', 0, 'phytoplancton'),
+('krill', 0, 'zooplancton'),
+('larveCrustacé', 1, 'zooplancton'),
+('larveMollusque', 1, 'zooplancton'),
+('larvePoisson', 1, 'zooplancton'),
+('meduse', 0, 'zooplancton'),
+('protozoaire', 0, 'zooplancton'),
+('rotifère', 0, 'zooplancton');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `type`
+--
+
+CREATE TABLE IF NOT EXISTS `type` (
+  `type` varchar(14) NOT NULL DEFAULT '',
+  PRIMARY KEY (`type`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `type`
+--
+
+INSERT INTO `type` (`type`) VALUES
+('phytoplancton'),
+('zooplancton');
+
+--
+-- Contraintes pour les tables exportées
+--
+
+--
+-- Contraintes pour la table `donnees_genomiques`
+--
+ALTER TABLE `donnees_genomiques`
+  ADD CONSTRAINT `cletrangeredonnees` FOREIGN KEY (`Espece`) REFERENCES `espece` (`espece`);
+
+--
+-- Contraintes pour la table `espece`
+--
+ALTER TABLE `espece`
+  ADD CONSTRAINT `cletrangereespece` FOREIGN KEY (`genre`) REFERENCES `genre` (`genre`);
+
+--
+-- Contraintes pour la table `famille`
+--
+ALTER TABLE `famille`
+  ADD CONSTRAINT `cletrangerefamille` FOREIGN KEY (`groupe`) REFERENCES `groupe_commun` (`groupe`);
+
+--
+-- Contraintes pour la table `genre`
+--
+ALTER TABLE `genre`
+  ADD CONSTRAINT `cletrangeregenre` FOREIGN KEY (`famille`) REFERENCES `famille` (`famille`);
+
+--
+-- Contraintes pour la table `groupe_commun`
+--
+ALTER TABLE `groupe_commun`
+  ADD CONSTRAINT `cleE1` FOREIGN KEY (`type`) REFERENCES `type` (`type`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
